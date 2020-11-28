@@ -34,6 +34,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class InventoryListener implements Listener {
 
+    private static InventoryListener inventoryListener;
+    public static void register(JavaPlugin javaPlugin) {
+        if (inventoryListener == null)
+            inventoryListener = new InventoryListener(javaPlugin);
+    }
+
     public InventoryListener(JavaPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
